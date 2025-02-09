@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be my Valentine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Romantic Font -->
+    <style>
+        body {
+            background: linear-gradient(45deg, red, blue);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .thank-you {
+            font-size: 40px;
+            margin-top: 20%;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .click-anywhere {
+            font-size: 14px; /* Smaller font */
+            margin-top: 20px;
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .question-text {
+            font-size: 40px; /* Larger font */
+            font-family: 'Dancing Script', cursive; /* Romantic font */
+            margin-top: 50px;
+            animation: flash 1s infinite; /* Flashing effect */
+        }
+
+        @keyframes flash {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        /* Style for the answer box */
+        .answer-buttons {
+            margin-top: 30px;
+        }
+
+        .answer-label {
+            font-size: 25px;
+            color: white;
+            margin: 10px;
+            font-family: 'Dancing Script', cursive; /* Romantic font */
+            color: #FF1493; /* Pinkish color for a romantic feel */
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 20px;
+            background-color: red;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Thank You Text -->
+<div class="thank-you" id="thankYou">Thank You for Staying!</div>
+
+<!-- Question Text -->
+<div class="question-text" id="questionText">Do you wanna be my Valentine this upcoming Valentine's Day?</div>
+
+<!-- Answer Buttons -->
+<div class="answer-buttons" id="answerButtons">
+    <label class="answer-label">
+        <input type="radio" name="answer" value="YES" id="yesBtn"> YES
+    </label>
+    <label class="answer-label">
+        <input type="radio" name="answer" value="NO" id="noBtn"> NO
+    </label>
+</div>
+
+<script>
+    // Handle YES and NO buttons
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    // If YES is selected, redirect to the third page
+    yesBtn.addEventListener('click', () => {
+        window.location.href = "Third page.html"; // Replace with the correct URL
+    });
+
+    // If NO is selected, show an alert
+    noBtn.addEventListener('click', () => {
+        alert("Try Again!");
+        // Optionally, reset or add more logic for retry
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASSIFIED INFORMATION</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #003366, #000033);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 20%;
+            overflow-x: hidden;
+            position: relative;
+            height: 200vh; /* Allow scrolling */
+        }
+        h1 {
+            font-size: 72px;
+            color: #ffffff;
+            font-weight: bold;
+            animation: textAnimation 3s infinite alternate;
+        }
+        .hint {
+            font-size: 18px;
+            font-style: italic;
+            color: #cccccc;
+        }
+        .login-box {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: inline-block;
+            border-radius: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 250px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #006699;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #004d66;
+        }
+        .error-message {
+            color: red;
+            font-size: 24px;
+            display: none;
+        }
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(45deg, #003366, #000033); }
+            100% { background: linear-gradient(45deg, #000033, #003366); }
+        }
+        @keyframes textAnimation {
+            0% { color: #ffffff; }
+            100% { color: #ffcccc; }
+        }
+
+        /* Falling spooky emojis */
+        .falling-emoji {
+            position: absolute;
+            font-size: 30px; /* Adjust emoji size */
+            animation: fall 6s infinite linear;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                left: calc(100% * random());
+                transform: rotate(0deg);
+            }
+            100% {
+                top: 100%;
+                left: calc(100% * random());
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Beware signs */
+        .beware-sign {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            text-transform: uppercase;
+            animation: moveBeware 6s infinite ease-in-out;
+        }
+
+        @keyframes moveBeware {
+            0% {
+                top: -5%;
+                left: calc(100% * random());
+            }
+            50% {
+                top: 50%;
+                left: calc(100% * random());
+            }
+            100% {
+                top: 100%;
+                left: calc(100% * random());
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>CLASSIFIED INFORMATION</h1>
+<p class="hint">Enter the details below to access the secret information.</p>
+
+<div class="login-box">
+    <form id="loginForm">
+        <label for="username" style="font-size: 24px;">Username: </label>
+        <input type="text" id="username" name="username" placeholder="Our callsign" required>
+        <br>
+        <label for="password" style="font-size: 24px;">Your favorite color: </label>
+        <input type="password" id="password" name="password" placeholder="Enter your favorite color" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <div class="error-message" id="errorMessage">Try again! 😞</div>
+</div>
+
+<!-- Falling Spooky Emojis -->
+<div class="falling-emoji" style="animation-delay: 0s;">💀</div>
+<div class="falling-emoji" style="animation-delay: 2s;">👻</div>
+<div class="falling-emoji" style="animation-delay: 4s;">☠️</div>
+<div class="falling-emoji" style="animation-delay: 6s;">👹</div>
+<div class="falling-emoji" style="animation-delay: 8s;">🕷️</div>
+<div class="falling-emoji" style="animation-delay: 10s;">🖤</div>
+
+<!-- Beware Signs -->
+<div class="beware-sign" style="animation-delay: 0s;">BEWARE</div>
+<div class="beware-sign" style="animation-delay: 2s;">BEWARE</div>
+<div class="beware-sign" style="animation-delay: 4s;">BEWARE</div>
+
+<!-- Particles Flying Effect -->
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        
+        // Updated password check to "blue"
+        if (username === 'babi' && password === 'blue') {
+            window.location.href = "Second Page.html";
+        } else {
+            document.getElementById('errorMessage').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('errorMessage').style.display = 'none';
+            }, 2000);
+        }
+    });
+
+    // Function to trigger "BEWARE" and "BE CAREFUL" pop-ups
+    function triggerPopUp() {
+        var randomPopUp = Math.random();
+        if (randomPopUp < 0.05) { // 5% chance for pop-up
+            alert("BEWARE! Something's not right...");
+        } else if (randomPopUp < 0.10) { // Another 5% chance
+            alert("BE CAREFUL! You might regret this.");
+        }
+    }
+
+    // Trigger pop-up every few seconds
+    setInterval(triggerPopUp, 4000); // Pop-up every 4 seconds
+</script>
+
+</body>
+</html>

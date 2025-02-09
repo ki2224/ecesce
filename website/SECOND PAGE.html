@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANGER</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding-top: 20%;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            transition: background-color 1s ease-in-out;
+        }
+        .loading {
+            font-size: 30px;
+            color: red;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px blue, 0 0 25px red;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fallText 3s infinite;
+        }
+        @keyframes fallText {
+            0% { top: -10%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .loading-bar {
+            width: 80%;
+            margin: 20px auto;
+            height: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background-color: red;
+            border-radius: 10px;
+        }
+        .question-text {
+            font-size: 30px;
+            color: white;
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+        }
+        .question-buttons {
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+        }
+        button {
+            padding: 15px;
+            font-size: 20px;
+            background-color: red;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            opacity: 0; /* Hidden initially */
+        }
+        button:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Loading Section -->
+<div class="loading" id="loading">BEWARE...</div>
+<div class="loading-bar">
+    <div id="loadingProgress" class="loading-progress"></div>
+</div>
+
+<!-- Question Section (Hidden initially) -->
+<div class="question-text" id="questionText">Do you still wish to continue?</div>
+<div class="question-buttons" id="questionButtons">
+    <button id="yesBtn" onclick="handleYes()">YES</button>
+    <button id="noBtn" onclick="handleNo()">Fine, NO CHOICE</button>
+</div>
+
+<script>
+    let loadingProgress = 0;
+    const loadingText = document.getElementById('loading');
+    const loadingBar = document.getElementById('loadingProgress');
+    const questionText = document.getElementById('questionText');
+    const questionButtons = document.getElementById('questionButtons');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    // Simulate slow loading
+    const loadingInterval = setInterval(function() {
+        loadingProgress += 1;
+        loadingText.textContent = 'BEWARE... ' + loadingProgress + '%';
+        loadingBar.style.width = loadingProgress + '%';
+        if (loadingProgress === 100) {
+            clearInterval(loadingInterval);
+            setTimeout(function() {
+                questionText.style.display = 'block'; // Show the question
+                questionButtons.style.display = 'block'; // Show the buttons
+                yesBtn.style.opacity = 1; // Make the "YES" button visible
+                noBtn.style.opacity = 1; // Make the "NO" button visible
+            }, 1000); // Wait a little after loading completes before showing the question and buttons
+        }
+    }, 200); // Slow loading speed
+
+    function handleYes() {
+        // Redirect to second page after clicking "YES"
+        window.location.href = "secondp2.html";
+    }
+
+    function handleNo() {
+        // Redirect to second page after clicking "NO"
+        window.location.href = "secondp2.html";
+    }
+</script>
+
+</body>
+</html>
